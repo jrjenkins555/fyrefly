@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
     "github.com/gofiber/fiber/v2"
-	"github.com/jrjenkins555/fyrefly/api/routes"
+	"github.com/jrjenkins555/fyrefly/pkg/routes"
 )
 
 func main() {
