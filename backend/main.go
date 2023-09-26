@@ -12,6 +12,6 @@ func main() {
 	// setup public routes
 	routes.PublicRoutes(app)
 
-	fmt.Println("running on port 3000...")
-    app.Listen(":3000")
+	fmt.Println("running on port 8080...")
+    app.Listen(":8080")
 }
