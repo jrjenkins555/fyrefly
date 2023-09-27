@@ -27,7 +27,7 @@ export default function FileUploadButton() {
         body: formData,
       });
       if (response.ok) {
-        alert('File uploaded successfully!');
+        console.log("File uploaded")
       } else {
         alert('File upload failed.');
       }

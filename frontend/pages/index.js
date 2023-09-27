@@ -7,7 +7,7 @@ export default function Home() {
   return (
     // simple Layout component
     <Layout>
-      <FileUploadButton headers></FileUploadButton>
+      <FileUploadButton></FileUploadButton>
     </Layout>
   );
 }
