@@ -34,11 +34,6 @@
   border-radius: 5px;
 }
 
-.uploadButton:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
 .uploadButton:hover {
   background-color: #ccc;
 }
