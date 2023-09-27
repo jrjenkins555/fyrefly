@@ -7,7 +7,7 @@ const siteTitle = 'AI Powered Survey Automation';
 
 export default function Layout({ children }) {
   return (
-    <div className={styles.container}>
+    <div className={styles.header}>
       <div className={styles.title}>
         &#9889; {siteTitle} &#9889;
       </div>

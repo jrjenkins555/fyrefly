@@ -4,10 +4,14 @@ import (
 	"fmt"
     "github.com/gofiber/fiber/v2"
 	"github.com/jrjenkins555/fyrefly/pkg/routes"
+	"github.com/jrjenkins555/fyrefly/pkg/middleware"
 )
 
 func main() {
     app := fiber.New()
+
+	// middleware
+	middleware.FiberMiddleware(app)
 
 	// setup public routes
 	routes.PublicRoutes(app)
