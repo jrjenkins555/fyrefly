@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
-import buttonStyles from './file-upload-button.module.css';
-import Cookies from "js-cookie"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button"
 
-export default function FileUploadButton() {
-  const [file, setFile] = useState(null);
+export default function InputFileButton() {
+  const [file, setFile] = useState<null | File>(null);
   const [uploading, setUploading] = useState(false);
 
-  const handleFileChange = (event) => {
-    const selectedFile = event.target.files[0];
-    setFile(selectedFile);
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files != null) {
+        const selectedFile = event.target.files[0];
+        setFile(selectedFile);
+    }
   };
 
   const handleUpload = async () => {
@@ -40,14 +43,12 @@ export default function FileUploadButton() {
   };
 
   return (
-    <div className={buttonStyles.fileUploadContainer}>
-      <label className={buttonStyles.labelContainer}>
-        <input type="file" accept=".pdf, .doc, .docx" onChange={handleFileChange} className={buttonStyles.fileInput} />
-        Choose File
-      </label>
-      <button name="file" onClick={handleUpload} disabled={uploading} className={buttonStyles.uploadButton}>
+    <div className="grid w-full max-w-sm items-center gap-1.5">
+      <Label htmlFor="file">File</Label>
+      <Input id="file" accept=".pdf, .doc, .docx" onChange={handleFileChange} type="file" />
+      <Button type="submit" onClick={handleUpload} disabled={uploading}>
         {uploading ? 'Uploading...' : 'Upload File'}
-      </button>
+      </Button>
     </div>
-  );
+  )
 }
