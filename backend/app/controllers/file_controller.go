@@ -3,6 +3,7 @@ package controllers
 import (
 	"fmt"
 	"github.com/gofiber/fiber/v2"
+	// "io/ioutil"
 )
 
 func TestEndpoint(c *fiber.Ctx) error {
@@ -11,19 +12,19 @@ func TestEndpoint(c *fiber.Ctx) error {
 }
 
 func Upload(c *fiber.Ctx) error {
-	fmt.Println("gettig to func")
 	file, err := c.FormFile("file")
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"error": err.Error(),
 		})
 	}
-	contentType := file.Header.Get("Content-Type")
 
-	// Print information about the uploaded file
-	fmt.Println("File Name:", file.Filename)
-	fmt.Println("File Size:", file.Size)
-	fmt.Println("File Type:", contentType)
+	fileContent, err := file.Open()
+	defer fileContent.Close()
+
+	// fileBytes, err := ioutil.ReadAll(fileContent)
+	// fileString := string(fileBytes)
+	
 	return c.JSON(fiber.Map{
 		"message": "File uploaded successfully",
 	})

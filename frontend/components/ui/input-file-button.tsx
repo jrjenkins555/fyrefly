@@ -1,14 +1,17 @@
+import React, { useState } from 'react';
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 
 export default function InputFileButton() {
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<null | File>(null);
   const [uploading, setUploading] = useState(false);
 
-  const handleFileChange = (event) => {
-    const selectedFile = event.target.files[0];
-    setFile(selectedFile);
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files != null) {
+        const selectedFile = event.target.files[0];
+        setFile(selectedFile);
+    }
   };
 
   const handleUpload = async () => {
