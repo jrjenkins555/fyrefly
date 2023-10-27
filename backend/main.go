@@ -2,20 +2,20 @@ package main
 
 import (
 	"fmt"
-    "github.com/gofiber/fiber/v2"
+	"github.com/gin-gonic/gin"
 	"github.com/jrjenkins555/fyrefly/pkg/routes"
 	"github.com/jrjenkins555/fyrefly/pkg/middleware"
 )
 
 func main() {
-    app := fiber.New()
+    app := gin.Default()
 
 	// middleware
-	middleware.FiberMiddleware(app)
+	middleware.GinMiddleware(app)
 
 	// setup public routes
 	routes.PublicRoutes(app)
 
 	fmt.Println("running on port 8080...")
-    app.Listen(":8080")
+    app.Run(":8080")
 }

@@ -6,7 +6,7 @@ Project for survey automation
 
 ### Backend Dependencies:
 
-- Using Go fiber framework
+- Using Gin framework
 
 ### Frontend
 
