@@ -1,24 +1,18 @@
 package middleware
 
 import (
-    "github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/cors"
-    "github.com/gofiber/fiber/v2/middleware/logger"
+	"github.com/gin-gonic/gin"
+	"github.com/gin-contrib/cors"
 )
 
-func FiberMiddleware(a *fiber.App) error {
-	// Allow cross port comms
-    a.Use(
-        cors.New(cors.Config{
-            AllowOrigins:     "http://localhost:3000",
-            AllowMethods:     "GET, POST, PUT, DELETE",
-            AllowHeaders:     "Origin, Content-Type, Accept",
-            ExposeHeaders:    "Content-Length",
-            AllowCredentials: true,
-            MaxAge:           3600,
-        }),
-        logger.New(),
-    )
+func GinMiddleware(r *gin.Engine) {
+	config := cors.DefaultConfig()
+	config.AllowOrigins = []string{"http://localhost:3000"}
+	config.AllowMethods = []string{"GET", "POST", "PUT", "DELETE"}
+	config.AllowHeaders = []string{"Origin", "Content-Type", "Accept"}
+	config.ExposeHeaders = []string{"Content-Length"}
+	config.AllowCredentials = true
+	config.MaxAge = 3600
 
-    return nil
+	r.Use(cors.New(config))
 }

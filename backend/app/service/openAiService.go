@@ -7,7 +7,7 @@ import (
 )
 
 func CallOpenAI() error {
-	client := openaigo.NewClient({OPEN_AI_KEY})
+	client := openaigo.NewClient("OPEN_AI_KEY")
 	request := openaigo.ChatRequest{
 		Model: "gpt-3.5-turbo",
 		Messages: []openaigo.Message{
